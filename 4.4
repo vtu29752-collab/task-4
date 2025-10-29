@@ -1,0 +1,17 @@
+def find_duplicate(nums):
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return num
+        seen.add(num)
+# Get input from user
+nums = list(map(int, input("Enter numbers separated by space: ").split()))
+duplicate = find_duplicate(nums)
+print("The repeated number is:", duplicate)
+
+Example 
+
+Enter numbers separated by space: 3 1 3 4 2
+The repeated number is: 3
+
+
