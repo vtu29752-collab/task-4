@@ -1,0 +1,44 @@
+def smallestCommonElement(mat):
+    rows = len(mat)
+    cols = len(mat[0])
+    # Check each number in first row
+    for num in mat[0]:
+        found = True
+        for r in range(1, rows):
+            # Binary search in each row
+            left, right = 0, cols - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if mat[r][mid] == num:
+                    break
+                elif mat[r][mid] < num:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            else:  # executed if while loop doesn't break
+                found = False
+                break
+        
+        if found:
+            return num
+    return -1
+# --- Get matrix input from user ---
+rows = int(input("Enter number of rows: "))
+cols = int(input("Enter number of columns: "))
+mat = []
+print("Enter matrix values row by row (sorted in increasing order):")
+for _ in range(rows):
+    row = list(map(int, input().split()))
+    mat.append(row)
+# Find and display smallest common element
+result = smallestCommonElement(mat)
+print("Smallest common element in all rows:", result)
+Example 1: 
+Input: 
+4 5
+1 2 3 4 5
+2 4 5 8 10
+3 5 7 9 11
+1 3 5 7 9
+ Output: 
+5 
