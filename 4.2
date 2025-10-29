@@ -1,0 +1,14 @@
+def countBits(n):
+    ans = []
+    for i in range(n + 1):
+        ans.append(bin(i).count('1'))
+    return ans
+# Get input from user
+n = int(input("Enter a non-negative integer: "))
+result = countBits(n)
+print("Count of 1's for numbers from 0 to", n, ":", result)
+Example
+Enter a non-negative integer: 5
+Count of 1's for numbers from 0 to 5 : [0, 1, 1, 2, 1, 2] 
+
+
