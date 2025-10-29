@@ -1,0 +1,52 @@
+students = {}
+n = int(input("Enter number of students: "))
+for _ in range(n):
+    name = input("\nEnter student name: ")
+    test = float(input("Enter Test mark: "))
+    assignment = float(input("Enter Assignment mark: "))
+    lab = float(input("Enter Lab mark: "))
+    students[name] = [test, assignment, lab]
+# Function to calculate average
+def average(marks):
+    return sum(marks) / len(marks)
+# 1. Highest average score
+max_avg = max(average(marks) for marks in students.values())
+highest_avg_students = [name for name, marks in students.items() if average(marks) == max_avg]
+# 2. Highest assignment marks
+max_assignment = max(marks[1] for marks in students.values())
+highest_assignment_students = [name for name, marks in students.items() if marks[1] == max_assignment]
+# 3. Lowest lab marks
+min_lab = min(marks[2] for marks in students.values())
+lowest_lab_students = [name for name, marks in students.items() if marks[2] == min_lab]
+# 4. Lowest average score
+min_avg = min(average(marks) for marks in students.values())
+lowest_avg_students = [name for name, marks in students.items() if average(marks) == min_avg]
+# Display results
+print("\n--- Results ---")
+print("Highest average score:", highest_avg_students, "with average =", max_avg)
+print("Highest assignment marks:", highest_assignment_students, "with marks =", max_assignment)
+print("Lowest lab marks:", lowest_lab_students, "with marks =", min_lab)
+print("Lowest average score:", lowest_avg_students, "with average =", min_avg)
+
+Example 
+Enter number of students: 3
+Enter student name: Alice
+Enter Test mark: 85
+Enter Assignment mark: 90
+Enter Lab mark: 80
+Enter student name: Bob
+Enter Test mark: 78
+Enter Assignment mark: 92
+Enter Lab mark: 70
+Enter student name: Charlie
+Enter Test mark: 85
+Enter Assignment mark: 85
+Enter Lab mark: 85
+
+Output-
+Highest average score: ['Charlie'] with average = 85.0
+Highest assignment marks: ['Bob'] with marks = 92.0
+Lowest lab marks: ['Bob'] with marks = 70.0
+Lowest average score: ['Bob'] with average = 80.0
+
+
